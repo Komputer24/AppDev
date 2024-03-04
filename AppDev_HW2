@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Annoying Quiz</title>
+        <style>
+            html{
+                background-color: gray;
+            }
+            .hidden{
+                display: none;
+                float: right;
+                margin-right: 120px;
+            }
+            #container{
+                height: 600px;
+                border: 2px solid black;
+                overflow: auto;
+            }
+            #bob{
+                font-size: 100px;
+                margin-top: 0px; 
+                margin-right: 200px;
+                position: fixed;
+            }
+            #wrapper{
+                float: right;
+                height: 520px;
+                width: 800px;
+                overflow: auto;
+            }
+            .confidence {
+              background-color: navy;
+              border: none;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: block;
+              font-size: 16px;
+              display: none;
+              float: left;
+              width: 200px;
+              margin: 10px 0px 10px 10px;
+            }
+            #stacked{
+                float: left;
+                margin-top: 80px;
+                margin-left: 200px;
+            }
+            #nameDiv{
+              float: left;
+              margin-top: 100px;
+              width: 70%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+            }
+        </style>
+        <script>
+            var story = 0;
+            var name;
+            questionTime = false;
+            function continueStory(){
+                if(questionTime == true){
+                    console.log("Answer the question!");
+                }else{
+                    story++;
+                    nextPhase();
+                }
+            }
+            function nextPhase(){
+                if(story == 1){
+                    document.getElementById("show1").style.display = "block";
+                    document.getElementById("bob").innerHTML = "🙄";
+                }else if(story == 2){
+                    document.getElementById("show2").style.display = "block";
+                    document.getElementById("bob").innerHTML = "😉";
+                }else if(story == 3){
+                    document.getElementById("show3").style.display = "block";                   document.getElementById("bob").innerHTML = "😋";
+                }else if(story == 4){
+                    document.getElementById("show4").style.display = "block";                   document.getElementById("bob").innerHTML = "🤔";
+                }else if(story == 5){
+                    document.getElementById("show5").style.display = "block";                 document.getElementById("bob").innerHTML = "😃";
+                    document.getElementById("show6").style.display = "block";  
+                    document.getElementById("show7").style.display = "block"; document.getElementById("show8").style.display = "block"; 
+                    questionTime = true;
+                }else if(story == 6){
+                    document.getElementById("show10").style.display = "block";                   document.getElementById("bob").innerHTML = "😒";
+                    document.getElementById("wrapper").scrollTop += 100;
+                }else if(story == 7){
+                    document.getElementById("show11").style.display = "block";                   document.getElementById("bob").innerHTML = "🥱";
+                    document.getElementById("wrapper").scrollTop += 100;
+                }else if(story == 8){
+                    questionTime = true;
+                    document.getElementById("show12").style.display = "block";                   document.getElementById("bob").innerHTML = "🙃";
+                    document.getElementById("wrapper").scrollTop += 100;
+                    setTimeout(function(){
+                        questionTime = false;
+                        name = prompt('Whats your name');
+                        if(name == ""){
+                            name = prompt('Your real name');
+                        }
+                    }, 1000);
+                    setTimeout(function(){
+                        document.getElementById("show13").style.display = "block";  
+                        document.getElementById("show13").innerHTML = "Alright " + name + ", lets start the real quiz";
+                        document.getElementById("bob").innerHTML = "😉";
+                        document.getElementById("wrapper").scrollTop += 100;
+                }, 1200);
+                }else if(story == 9){
+                    document.getElementById("show14").style.display = "block";  
+                    document.getElementById("bob").innerHTML = "😏";
+                    document.getElementById("wrapper").scrollTop += 100;
+                }else if(story == 10){
+                    document.getElementById("show15").style.display = "block";  
+                    document.getElementById("bob").innerHTML = "😮";
+                    document.getElementById("show16").style.display = "block"; 
+                    document.getElementById("wrapper").scrollTop += 200;
+                }else if(story == 11){
+                    document.getElementById("show17").style.display = "block";  
+                    document.getElementById("bob").innerHTML = "😁";
+                    document.getElementById("wrapper").scrollTop += 100;
+                }else{
+                    console.log("Read the instructions");
+                }
+            }
+            function hideDiv(){
+                document.getElementById("stacked").style.display = "none";
+                document.getElementById("show9").style.display = "block";
+                document.getElementById("bob").innerHTML = "🤔";
+                setTimeout(function(){
+                    questionTime = false;
+                }, 500);
+            }
+        </script>
+    </head>
+    <body>
+        <div onclick="continueStory()" id="container">
+            <h1 id="bob">✌️😄</h1>
+            <h1 style="float: right; margin-right: 120px;">Hey! Welcome to The Annoying Quiz!(click to continue)</h1>
+            <div id="wrapper">
+                <h1 class="hidden" id="show1">I know I know this seems kinda bland</h1>
+                <h1 class="hidden" id="show2">We can change that</h1>
+                <h1 class="hidden" id="show3">But we'll do that later</h1>
+                <h1 class="hidden" id="show4">First I wanna know about you</h1>
+                <h1 class="hidden" id="show5">What's your confidence level for this quiz?</h1>
+                <h1 class="hidden" id="show9">Actually Nevermind</h1>
+                <h1 class="hidden" id="show10">That's not <a href="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXY4Y3l4dzhwMzFlaXhwYnpkazFnbHhyNXdjd3ppMmdyMW1ydXhpeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lZTvTGEGKU6gnQ2wBr/giphy.gif" style="text-decoration: none; color: black;">important</a></h1>
+                <h1 class="hidden" id="show11">Alright that's enough talking</h1>
+                <h1 class="hidden" id="show12">I'm Bob by the way</h1>
+                <h1 class="hidden" id="show13">---</h1>
+                <h1 class="hidden" id="show14">To get there you need to click a link</h1>
+                <h1 class="hidden" id="show15" style="text-decoration: underline;">The link is hidden in one of the words we</h1>
+                <h1 class="hidden" id="show16" style="text-decoration: underline;">said in our whole conversation</h1>
+                <h1 class="hidden" id="show17">Good Luck finding it!(scroll to look)</h1>
+            </div>
+            <div id="stacked">
+                <button class="confidence" id="show6" onmouseover="hideDiv()">Kinda bad</button><br>
+                <button class="confidence" id="show7" onmouseover="hideDiv()">Pretty Good</button><br>
+                <button class="confidence" id="show8" onmouseover="hideDiv()">Super Confident</button><br>
+            </div>
+        </div>
+    </body>
+</html>
